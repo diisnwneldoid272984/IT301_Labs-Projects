@@ -1,0 +1,67 @@
+@import url('https://fonts.googleapis.com/css2?family=Almendra:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+
+body {
+    background-color: silver;
+    color: #1a1a1a;
+    font-family: "Almendra", serif;
+    max-width: 800px;
+    margin: 40px auto;
+    padding: 0 20px;
+    line-height: 1.6;
+}
+
+h1.cool {
+    background: linear-gradient(100deg, #6a11cb, #2575fc);
+    color: white;
+    padding: 20px;
+    border: 2px solid white;
+    border-radius: 15px;
+    text-align: center;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+}
+
+h2 {
+    color: blueviolet;
+    border-bottom: 3px solid black;
+    padding-bottom: 5px;
+    margin-top: 35px;
+}
+
+.pstyle {
+    background-color: white;
+    padding: 15px;
+    border-radius: 3px;
+    border: 5px solid black;
+    border-top: 3px solid red;
+    border-bottom: 3px solid red;
+    transition: 0.2s ease;
+}
+
+.pstyle:hover {
+    background-color: #f0f0f0;
+    color: blueviolet;
+}
+
+ul {
+    list-style-type: square;
+}
+
+li {
+    margin-bottom: 10px;
+    transition: 0.2s ease;
+}
+
+li:hover {
+    transform: translateX(5px);
+}
+
+a {
+    color: #2575fc;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+a:hover {
+    color: #6a11cb;
+    text-decoration: underline;
+}
