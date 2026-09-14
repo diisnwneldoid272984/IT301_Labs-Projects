@@ -135,3 +135,33 @@ a:hover {
     color: #6a11cb;
     text-decoration: underline;
 }
+.corner-art {
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+    margin: 0;
+    max-width: 180px;
+    text-align: center;
+    z-index: 10;
+}
+
+.corner-art img {
+    display: block;
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+    border: 3px solid black;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    transition: transform 0.2s ease;
+}
+
+.corner-art img:hover {
+    transform: scale(1.05);
+}
+
+.corner-art figcaption {
+    margin-top: 6px;
+    font-size: 0.75em;
+    color: #1a1a1a;
+    font-style: italic;
+}
