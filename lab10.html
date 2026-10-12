@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<body>
+<script>
+  let message = "Enter the total restaurant bill amount:";
+  let amt;
+
+  do {
+    amt = Number(prompt(message));
+
+    if (amt === 0) {
+      message = "Please enter a bill amount greater than zero.";
+    } else if (isNaN(amt)) {
+      message = "Invalid input. Please enter a numeric bill amount.";
+    } else if (amt < 0) {
+      message = "Negative amounts are not allowed. Please enter a valid bill amount.";
+    }
+  } while (!(amt > 0));
+
+  let tip = amt * 0.1;
+  let result = "For a bill of $" + amt + ", the tip should be $" + tip;
+console.log(result);
+document.write(result);
+
+</script>
+</body>
+</html>
