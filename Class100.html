@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>class</title>
+<style>
+    button{
+        display: flex;
+        background-color: blue;
+        height: 200px;
+        width: 300px;
+        padding: 30px 30px;
+        font-size: 50px;
+
+    }
+     .b2 {
+        background-color: rgb(0, 0, 0);
+        height: 200px;
+        width: 300px;
+        padding: 30px 30px;
+        font-size: 50px;
+        color: white;
+    }
+    header{
+        height: 100px;
+        font-size: 60px;
+        display: block;
+        align-content: center;
+        flex-direction: row;
+        padding: 30px 30px;
+        color: brown;
+    }
+
+</style>
+</head>
+<body>
+<button id="btn">Click Me! 😊</button>
+<header> SPLIT THEM UP!! </header>
+<button class ='b2'id="btn2">No dont click me Me! </button>
+
+<script>
+
+const btn = document.getElementById('btn');
+
+btn.addEventListener('mouseover', function() {
+btn.textContent = 'Do not click! 😠';
+btn.style.backgroundColor = 'yellow';
+});
+
+btn.addEventListener('click', function() {
+btn.textContent = 'Ouch! 🤕';
+btn.style.backgroundColor = 'red';
+});
+
+btn.addEventListener('mouseout', function() {
+btn.textContent = 'Phew! 😌';
+btn.style.backgroundColor = 'lightgreen';
+});
+
+const btn2 = document.getElementById('btn2');
+
+btn2.addEventListener('mouseover', function() {
+btn2.textContent = 'Do not click! 😠';
+btn2.style.backgroundColor = 'pink';
+});
+
+btn2.addEventListener('click', function() {
+btn2.textContent = 'Ouch! 🤕';
+btn2.style.backgroundColor = 'gold';
+});
+
+btn2.addEventListener('mouseout', function() {
+btn2.textContent = 'Phew! 😌';
+btn2.style.backgroundColor = 'silver';
+});
+
+</script>
+</body>
+</html>
