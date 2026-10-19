@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<body>
+    <h1>Calculator</h1>
+
+    Name: <input type="text" id="name">
+    <button onclick="greet()">Greet</button>
+    <p id="greeting"></p>
+
+    <input type="number" id="num1">
+    <input type="number" id="num2"><br>
+
+    <input type="radio" name="op" value="+"> Add
+    <input type="radio" name="op" value="-"> Subtract
+    <input type="radio" name="op" value="*"> Multiply
+    <input type="radio" name="op" value="/"> Divide<br>
+
+    <button onclick="calculate()">Calculate</button>
+    <button onclick="clearAll()">Clear the box </button>
+    <p id="result"></p>
+
+    <script>
+        function greet() {
+            let name = document.getElementById('name').value;
+            document.getElementById('greeting').innerHTML = 'Hello, ' + name + '!';
+        }
+
+        function calculate() {
+            let a = Number(document.getElementById('num1').value);
+            let b = Number(document.getElementById('num2').value);
+            let op = document.querySelector('input[name="op"]:checked').value;
+            let answer;
+
+            if (op == '+') answer = a + b;
+            if (op == '-') answer = a - b;
+            if (op == '*') answer = a * b;
+            if (op == '/') answer = a / b;
+
+         document.getElementById('result').innerHTML = 'Result: ' + answer;
+        }
+
+
+    </script>
+</body>
+</html>
