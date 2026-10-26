@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Lab14: API</title>
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<script>
+let bttn1 = document.createElement('button');
+bttn1.textContent = 'Generate Profile';
+document.body.append(bttn1);
+
+let card3 = document.createElement('div');
+document.body.append(card3);
+
+async function getUser() {
+  let p = await fetch('https://randomuser.me/api/');
+  p = await p.json();
+  let u = p.results[0];
+
+  card3.innerHTML = `<img src="${u.picture.large}">
+    <h3>${u.name.first} ${u.name.last}</h3>
+    <p>${u.email}</p>
+    <p>${u.phone}</p>`;
+}
+
+bttn1.onclick = getUser;
+getUser();
+</script>
+
+</body>
+</html>
