@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lab16: Form Validation</title>
+    <style>
+        .valid { color: rgb(45, 193, 45); }
+        .invalid { color: rgb(176, 19, 19); }
+    </style>
+</head>
+<body>
+    <form>
+        <input type="text" id="nm" placeholder="Enter your name" required>
+        <input type="email" id="em" placeholder="Enter your email" required>
+        <input type="password" id="pw" placeholder="Enter a password" required>
+
+        <div class="rules" id="password-rules" hidden>
+            <div id="rule-length" class="rule">✖ At least 6 characters</div>
+            <div id="rule-special" class="rule">✖ Must include a special character (!@#$...)</div>
+            <div id="rule-uppercase" class="rule">✖ Must include an uppercase letter (A-Z)</div>
+        </div>
+
+        <button type="submit">Submit</button>
+    </form>
+
+    <p id="msg"></p>
+
+    <script>
+        const form = document.querySelector("form");
+        const pw = document.getElementById("pw");
+        const msg = document.getElementById("msg");
+
+        form.addEventListener("submit", (event) => {
+            event.preventDefault();
+
+            const name = document.getElementById("nm").value;
+            const email = document.getElementById("em").value;
+            const password = pw.value;
+
+            if (name === "" || email === "" || password === "") {
+                msg.textContent = "Please fill out all fields.";
+            } else {
+                msg.textContent = "Success!";
+                form.reset();
+            }
+        });
+
+
+    </script>
+</body>
+</html>
