@@ -1,93 +1,87 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>learn</title>
-
-    <style>
-        #con {
-            display: flex;
-            height: 100vh;
-            
-        }
-        #side {
-            width: 100px;
-            background-color: orange;
-            color: red;
-        }
-
-        #img {
-            flex: 1;
-            display: flex;
-            flex-wrap: wrap;
-            overflow-y: auto;
-        }
-        .image {
-            margin: auto;
-            flex-grow: 1;
-            padding: 3px;
-            height: 100px;
-        }
-        .emoji {
-            top: 5px;
-            font-size: 50px;
-            text-align: center;
-        }
-        .emoji2 {
-            position: absolute;
-            bottom: 10px;
-            left: 25px;
-            font-size: 50px;
-            text-align: center;
-        }
-
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Student Database</title>
 </head>
-
 <body>
+<h1>Student Database</h1>
 
-    <div id="con">
+<label for="name">Name:</label>
+<input type="text" id="name"><br><br>
 
-        <div id="side">
-            
-            <p class="emoji">&#x1F4F7;</p>
-            <p class="emoji">&#x1F5C4;&#xfe0f;</p>
-            <p class="emoji">&#x2764;&#xfe0f;</p>
-            <p class="emoji2">&#x1F5D1;&#xfe0f;</p>
-        </div>
+<label for="grade">Grade:</label>
+<input type="text" id="grade"><br><br>
 
-        <div id="img">
+<button type="button" id="push">Push Data</button>
+<button type="button" id="get">Get Data</button>
 
-            <img class="image" src="https://picsum.photos/137/100">
-            <img class="image" src="https://picsum.photos/284/100">
-            <img class="image" src="https://picsum.photos/391/100">
-            <img class="image" src="https://picsum.photos/216/100">
-            <img class="image" src="https://picsum.photos/348/100">
-            <img class="image" src="https://picsum.photos/172/100">
-            <img class="image" src="https://picsum.photos/263/100">
-            <img class="image" src="https://picsum.photos/119/100">
-            <img class="image" src="https://picsum.photos/375/100">
-            <img class="image" src="https://picsum.photos/231/100">
-            <img class="image" src="https://picsum.photos/304/100">
-            <img class="image" src="https://picsum.photos/156/100">
-            <img class="image" src="https://picsum.photos/399/100">
-            <img class="image" src="https://picsum.photos/187/100">
-            <img class="image" src="https://picsum.photos/327/100">
-            <img class="image" src="https://picsum.photos/245/100">
-            <img class="image" src="https://picsum.photos/112/100">
-            <img class="image" src="https://picsum.photos/359/100">
-            <img class="image" src="https://picsum.photos/201/100">
-            <img class="image" src="https://picsum.photos/278/100">
-            <img class="image" src="https://picsum.photos/143/100">
-            <img class="image" src="https://picsum.photos/316/100">
-            <img class="image" src="https://picsum.photos/194/100">
-            <img class="image" src="https://picsum.photos/367/100">
-            <img class="image" src="https://picsum.photos/252/100">
+<script src="https://www.gstatic.com/firebasejs/10.12.5/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.5/firebase-firestore-compat.js"></script>
+<script>
+const firebaseConfig = {
+  apiKey: "AIzaSyD8foW5igNI6zKrhz_vDQbVfxxc-Hvg8KI",
+  authDomain: "studentdatabase-49a77.firebaseapp.com",
+  projectId: "studentdatabase-49a77",
+  storageBucket: "studentdatabase-49a77.firebasestorage.app",
+  messagingSenderId: "684592323862",
+  appId: "1:684592323862:web:53d8a0bd1d2d9d1a170437"
+};
 
-        </div>
 
-    </div>
+firebase.initializeApp(firebaseConfig);
 
+const db = firebase.firestore();
+
+
+const nameInput = document.getElementById('name');
+const gradeInput = document.getElementById('grade');
+const pushBtn = document.getElementById('push');
+const getBtn = document.getElementById('get');
+
+pushBtn.addEventListener('click', async function(event) {
+
+    try {
+
+        const docRef = await db.collection('students').add({
+            name: nameInput.value,
+            grade: gradeInput.value, 
+            pass: gradeInput.value > 50 ? 'pass' : 'fail'
+        });
+
+        alert('Your data saved successfully');
+
+    } catch (error) {
+
+        console.error("Firebase error:", error);
+        alert("Could not save your data.");
+
+    }
+
+});
+getBtn.addEventListener('click', async function(event) {
+
+    try {
+
+        const snapshot = await db.collection('students').get();
+
+        snapshot.forEach(doc => {
+
+            console.log(`Name: ${doc.data().name}
+Grade: ${doc.data().grade}
+Pass: ${doc.data().pass}`);
+
+        });
+
+    } catch (error) {
+
+        console.error("Firebase error:", error);
+        alert("Could not retrieve your data.");
+
+    }
+
+});
+</script>
 </body>
 </html>
